@@ -1,0 +1,18 @@
+{% extends "admintemplates/adminbase.html" %}
+
+
+{% block title %} Add Page {% endblock %}
+
+{% block header %}
+    {{ form.media }}
+{% endblock %}
+
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Save</button>
+</form>
+
+{% endblock %}

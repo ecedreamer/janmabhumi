@@ -1,0 +1,15 @@
+from .base_settings import *
+
+
+DEBUG = False
+ALLOWED_HOSTS = ["*"]
+
+STATIC_ROOT = BASE_DIR / "static"
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'prod.db',
+    }
+}
+

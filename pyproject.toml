@@ -1,0 +1,12 @@
+[project]
+name = "janmabhumi"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django-summernote>=0.8.20.0",
+    "django>=5.1.2",
+    "pillow>=11.0.0",
+    "python-decouple>=3.8",
+]
