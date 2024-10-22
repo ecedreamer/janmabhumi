@@ -29,3 +29,27 @@ class Page(AbstractModel):
 
     def __str__(self) -> str:
         return self.page_name
+
+
+class PlaceCategory(AbstractModel):
+    name = models.CharField(max_length=64)
+    slug = models.SlugField(max_length=128)
+    icon = models.CharField(max_length=64)
+    image = models.ImageField(upload_to="category/", null=True, blank=True)
+    description = models.TextField(blank=True)
+
+    def __str__(self) -> str:
+        return self.name
+
+
+class Place(AbstractModel):
+    name = models.CharField(max_length=64)
+    slug = models.CharField(max_length=128)
+    category = models.ForeignKey(PlaceCategory, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="places/")
+    description = models.TextField(blank=True)
+    view_count = models.PositiveBigIntegerField(default=0)
+
+    def __str__(self) -> str:
+        return self.name
+

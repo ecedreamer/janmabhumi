@@ -6,6 +6,9 @@ urlpatterns = [
     ## client side views
 
     path("", client_views.HomeView.as_view(), name="home"),
+    path("about/", client_views.AboutView.as_view(), name="about"),
+
+    path("<slug>/", client_views.PageDetailView.as_view(), name="pagedetail"), ## dont put any url with single path param below this
 
     ## admin side views
 
