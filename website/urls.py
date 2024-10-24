@@ -2,13 +2,17 @@ from django.urls import path
 from .views import client_views, admin_views
 
 
+app_name = "website"
 urlpatterns = [
     ## client side views
 
     path("", client_views.HomeView.as_view(), name="home"),
     path("about/", client_views.AboutView.as_view(), name="about"),
+    path("contact/", client_views.ContactView.as_view(), name="contact"),
+    path("places/", client_views.PlaceListView.as_view(), name="placelist"),
+    path("<category>/places/", client_views.PlaceListView.as_view(), name="categorizedplacelist"),
 
-    path("<slug>/", client_views.PageDetailView.as_view(), name="pagedetail"), ## dont put any url with single path param below this
+    path("<slug>/", client_views.PageDetailView.as_view(), name="pagedetail"),  # dont put any url with single path param below this
 
     ## admin side views
 

@@ -23,3 +23,26 @@ Janmabhumi
 10. Event Detail Page
 11. Notice List Page
 12. Notice Detail Page
+
+### Place Details
+**About**
+- name
+- slug
+- image
+- service
+- description
+
+**Contact**
+- office_location
+- contact_person
+- mobile
+- phone
+- email
+- website
+- map_latitude, map_longitude
+
+**Executive Members**
+- Post
+- Name
+- Level
+- Image

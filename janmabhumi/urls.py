@@ -5,8 +5,8 @@ from django.conf.urls.static import static
 from .error_views import *
 
 urlpatterns = [
-    path('', include("website.urls")),
-    path('dev-control/', admin.site.urls),
+    path('', include("website.urls", namespace="website")),
+    path('dev/admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
 ]
 

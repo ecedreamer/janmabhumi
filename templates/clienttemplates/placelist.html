@@ -1,0 +1,12 @@
+{% extends "clienttemplates/base.html" %}
+
+{% block title %} List of Places {% endblock %}
+
+{% block content %}
+<h3>Place List</h3>
+    {%  for place in placelist %}
+    <li>{{ place.name }}</li>
+    {% empty %}
+    <p class="center">No places</p>
+    {% endfor %}
+{% endblock %}
