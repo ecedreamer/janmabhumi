@@ -32,6 +32,13 @@ body {
     background-color: #f8f9fa;
 }
 
+/* Simple style for the active navbar item */
+.navbar-nav .nav-link.active {
+    color: #288fe5 !important; /* Blue text for active link */
+    font-weight: bold; /* Bold font for active link */
+}
+
+
 .container {
     max-width: 1200px;
 }

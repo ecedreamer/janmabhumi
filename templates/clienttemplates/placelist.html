@@ -2,11 +2,33 @@
 
 {% block title %} List of Places {% endblock %}
 
+
+{% block popular_places %}{% if place_type == 'popular_places' %}active{% endif %}{% endblock %}
+{% block placelist %}{% if place_type != 'popular_places' %}active{% endif %}{% endblock %}
+
 {% block content %}
-<h3>Place List</h3>
-    {%  for place in placelist %}
-    <li>{{ place.name }}</li>
-    {% empty %}
-    <p class="center">No places</p>
-    {% endfor %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4>{% if category %}Places in <span class="text-primary">"{{ category.name }}"</span>{% else %}Popular Places{% endif %}</h4>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        {% for place in placelist %}
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow-sm">
+                <img src="{{ place.image.url}}" class="card-img-top" alt="{{ place.name }}">
+                <div class="card-body">
+                    <h5 class="card-title mb-3"><a href="{% url 'website:placedetail' place.slug %}">{{ place.name}}</a></h5>
+                    <div class="mt-2">
+                        <span class="text-muted small">Views: {{ place.view_count}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+            <p class="center">No places</p>
+        {% endfor %}
+    </div>
 {% endblock %}

@@ -1,0 +1,41 @@
+{% extends "clienttemplates/base.html" %}
+
+{% block title %} {{ place.name }} {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h4>{{ place.name }}</h4>
+            <hr>
+            <img src="{{ place.image.url }}" class="img-fluid" alt="">
+            {% if place.service %}
+                <h5>Service</h5>
+                <p>{{ place.service|safe }}</p>
+            {% endif %}
+
+            <h5>Executive Members</h5>
+            <div class="row">
+
+                {% for member in executive_members %}
+                    <div class="col-md-3">
+                        <div class="card p-2">
+
+                            <p>Name: {{ member.full_name }}</p>
+                            <p>Position: {{ member.post }}</p>
+                            {% if member.image %}
+                                <img src="{{ member.image.url }}" alt="">
+                            {% endif %}
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+
+            <p>{{ place.description|safe }}</p>
+            <br>
+            <p>Viewed {{ place.view_count }} times</p>
+        </div>
+    </div>
+
+
+{% endblock %}

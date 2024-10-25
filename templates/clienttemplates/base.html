@@ -21,13 +21,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'website:home' %}">Home</a>
+                        <a class="nav-link {% block home %}{% endblock %}" aria-current="page" href="{% url 'website:home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'website:placelist' %}">Popular Places</a>
+                        <a class="nav-link {% block popular_places %}{% endblock %}" aria-current="page" href="{% url 'website:placelist' %}">Popular Places</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle {% block placelist %}{% endblock %}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Locate
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -37,10 +37,10 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'website:about' %}" class="nav-link">About Us</a>
+                        <a href="{% url 'website:about' %}" class="nav-link {% block about %}{% endblock %}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'website:contact' %}" class="nav-link">Contact</a>
+                        <a href="{% url 'website:contact' %}" class="nav-link {% block contact %}{% endblock %}">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -58,24 +58,27 @@
             <div class="row">
                 <!-- Column 1 -->
                 <div class="col-md-4">
-                    <h5>About Us</h5>
-                    <p>We are committed to delivering sustainable solutions and providing excellent customer service. Learn more about our mission and values.</p>
+                    <h5>About Naksalbari</h5>
+                    <hr>
+                    <p>{{ site_info.short_description }}</p>
+                    <a href="{% url 'website:about' %}" class="btn btn-info text-white">Learn More</a>
                 </div>
 
                 <!-- Column 2 -->
                 <div class="col-md-4">
                     <h5>Quick Links</h5>
+                    <hr>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Home</a></li>
-                        <li><a href="#" class="text-white">Services</a></li>
-                        <li><a href="#" class="text-white">Contact</a></li>
-                        <li><a href="#" class="text-white">Blog</a></li>
+                        <li><a href="{% url 'website:home' %}" class="text-white">Home</a></li>
+                        <li><a href="{% url 'website:contact' %}" class="text-white">Contact Us</a></li>
+                        <li><a href="{% url 'website:about' %}" class="text-white">About Naksalbari</a></li>
                     </ul>
                 </div>
 
                 <!-- Column 3 -->
                 <div class="col-md-4">
                     <h5>Locate Places</h5>
+                    <hr>
                     <ul class="list-unstyled">
                         <li>
                             <a class="text-white" href="{% url 'website:placelist' %}"><i class="bi bi-heart"></i> Popular Places</a>
@@ -89,6 +92,12 @@
                             </li>
                         {% endfor %}
                     </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center text-secondary">Designed and Developed by <a class="text-white" href="https://dipakniroula.com.np">Dipak Niroula</a></p>
                 </div>
             </div>
         </div>

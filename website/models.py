@@ -35,7 +35,22 @@ class Operator(AbstractModel):
         return self.full_name
 
 
-class Page(AbstractModel):
+class SiteInfo(AbstractModel):  # only one can be active, if multiple, the latest will be taken
+    version = models.PositiveIntegerField(default=0, unique=True)
+    name = models.CharField(max_length=64)
+    municipality = models.CharField(max_length=64)
+    ward_no = models.CharField(max_length=3)
+    district = models.CharField(max_length=64)
+    province = models.CharField(max_length=64)
+    image = models.ImageField(upload_to="site_info/")
+    short_description = models.CharField(max_length=200)
+    description = models.TextField()
+
+    def __str__(self) -> str:
+        return str(self.version)
+
+
+class ExtraPage(AbstractModel):
     page_name = models.CharField(max_length=64)
     page_slug = models.SlugField(max_length=128)
     image = models.ImageField(upload_to="pages/", null=True, blank=True)
@@ -87,3 +102,21 @@ class ExecutiveMembers(AbstractModel):
 
     def __str__(self) -> str:
         return f"{self.full_name} ({self.place.name})"
+
+
+class ImageSlider(AbstractModel):
+    slider_name = models.CharField(max_length=128)
+    image = models.ImageField(upload_to="sliders/")
+
+    def __str__(self) -> str:
+        return self.slider_name
+
+
+class ContactMessage(AbstractModel):
+    sender_name = models.CharField(max_length=64)
+    mobile = models.CharField(max_length=16, blank=True)
+    subject = models.CharField(max_length=128)
+    message = models.TextField()
+
+    def __str__(self) -> str:
+        return self.sender_name

@@ -13,7 +13,6 @@ from .form_utils import BootstrapForm, RegexPasswordValidator
 from website import models
 
 
-
 class OperatorLoginForm(forms.Form):
     email = forms.CharField(
         widget=forms.TextInput(attrs={"class": "form-control"}),
@@ -52,7 +51,7 @@ class OperatorLoginForm(forms.Form):
 
 class AdminPageForm(BootstrapForm, forms.ModelForm):
     class Meta:
-        model = models.Page
+        model = models.ExtraPage
         fields = "__all__"
         widgets = {
             "content": SummernoteWidget(
