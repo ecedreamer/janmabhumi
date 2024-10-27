@@ -1,13 +1,18 @@
 {% extends "clienttemplates/base.html" %}
 
-{% block title %} {{ page.page_name }} {% endblock %}
+{% block title %} {{ site_info.name }} {% endblock %}
 
 {% block about %}active{% endblock %}
 
 {% block content %}
     <section>
-        <h4>About Page</h4>
-        <hr>
-
+        <div class="row">
+            <div class="col-md-12">
+                <h4>About {{ site_info.name }}</h4>
+                <hr>
+                <img src="{{ site_info.image.url }}" class="img-fluid" alt="">
+                <p>{{ site_info.description|safe }}</p>
+            </div>
+        </div>
     </section>
 {% endblock %}

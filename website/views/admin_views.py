@@ -15,7 +15,7 @@ logger = logging.getLogger("django")
 class AdminLoginView(generic.FormView):
     template_name = "admintemplates/adminlogin.html"
     form_class = admin_forms.OperatorLoginForm
-    success_url = reverse_lazy("core:admindashboard")
+    success_url = reverse_lazy("website:admindashboard")
 
     def form_valid(self, form):
         operator = Operator.objects.get(user__username=form.cleaned_data.get("email"))
@@ -36,7 +36,7 @@ class AdminRequiredMixin:
             self.operator = request.user.operator
         except Exception:
             messages.error(request, "You have to login to do this operation")
-            return redirect(reverse("core:adminlogin") + f"?next={request.path}")
+            return redirect(reverse("website:adminlogin") + f"?next={request.path}")
         return super().dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -48,13 +48,19 @@ class AdminRequiredMixin:
 class AdminLogoutView(AdminRequiredMixin, generic.View):
     def get(self, request):
         logout(request)
-        return redirect("core:adminlogin")
+        return redirect("website:adminlogin")
 
-class AdminDashboardView(generic.TemplateView):
+class AdminDashboardView(AdminRequiredMixin, generic.TemplateView):
     template_name = "admintemplates/admindashboard.html"
 
 
-class AdminPageCreateView(generic.CreateView):
+class AdminPageCreateView(AdminRequiredMixin, generic.CreateView):
     template_name = "admintemplates/adminpagecreate.html"
     form_class = admin_forms.AdminPageForm
+    success_url = "/admin"
+
+
+class AdminPlaceCreateView(AdminRequiredMixin, generic.CreateView):
+    template_name = "admintemplates/adminplacecreate.html"
+    form_class = admin_forms.AdminPlaceForm
     success_url = "/admin"

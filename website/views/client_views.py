@@ -22,6 +22,7 @@ class HomeView(ClientMixin, generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["image_sliders"] = ImageSlider.objects.filter(is_active=True).order_by("-id")
+        context["important_contants"] = ImportantContact.objects.filter(is_active=True).order_by("display_order")
         return context
 
 

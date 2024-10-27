@@ -53,16 +53,50 @@
 
     <section class="mb-5">
         <div class="row">
-            <div class="col-md-6">
-                <h3>Our Services</h3>
-                <p>We offer a wide range of services to help your business grow. Whether you are looking for
-                    consultation, development, or marketing, we have you covered.</p>
+            <div class="col-md-12">
+                <h3>Explore Places</h3>
+                <p>Click below</p>
+                <hr>
+                <div class="row text-center">
+                    {% for category in place_categories %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <div class="icon-container">
+                                    <a href="{% url 'website:categorizedplacelist' category.slug %}"><i class="{{ category.icon }}"></i></a>
+                                </div>
+                                <h5 class="card-title"><a class="text-danger" href="{% url 'website:categorizedplacelist' category.slug %}">{{ category.name }}</a></h5>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
-            <div class="col-md-6">
-                <h3>Contact Us</h3>
-                <p>If you have any questions or want to get in touch with us, feel free to reach out through our contact
-                    page. We are always happy to help!</p>
-                <a href="#" class="btn btn-secondary">Get in Touch</a>
+    </section>
+
+    <section class="mb-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Important Contacts</h3>
+                <p>Please call these numbers in case of emergency</p>
+                <hr>
+                <div class="row">
+                    {% for important_contant in important_contants %}
+                        <div class="col-md-3 card">
+                            <div class="card-header bg-danger">
+                                <h5 class="text-white">{{ important_contant.service_type }} Service</h5>
+                                <h6 class="text-dark"> {{ important_contant.service_provider }} </h6>
+
+                            </div>
+                            <div class="card-body">
+                                <p>Mobile: {{ important_contant.mobile_number }}</p>
+                                <p>Phone: {{ important_contant.phone_number }}</p>
+                                <p>Email: {{ important_contant.email }}</p>
+                                <p>Website: {{ important_contant.website }}</p>
+                            </div>
+
+                        </div>
+                    {% endfor %}
+
+                </div>
             </div>
         </div>
     </section>

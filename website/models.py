@@ -15,6 +15,16 @@ POST_LEVEL = (
     ("10", 10),
 )
 
+IMPORTANT_CONTACT_TYPE = (
+    ("Ambulance", "Ambulance"),
+    ("Hospital", "Hospital"),
+    ("Nepal Police", "Nepal Police"),
+    ("Electricity Authority", "Electricity Authority"),
+    ("Water Supply", "Water Supply"),
+    ("LPG Gas", "LPG Gas"),
+    ("Others", "Others")
+)
+
 
 class AbstractModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -120,3 +130,17 @@ class ContactMessage(AbstractModel):
 
     def __str__(self) -> str:
         return self.sender_name
+
+
+class ImportantContact(AbstractModel):
+    service_provider = models.CharField(max_length=64)
+    service_type = models.CharField(max_length=64, choices=IMPORTANT_CONTACT_TYPE)
+    contact_person = models.CharField(max_length=64)
+    mobile_number = models.CharField(max_length=20)
+    phone_number = models.CharField(max_length=20, blank=True)
+    website = models.URLField(null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    display_order = models.PositiveIntegerField()
+
+    def __str__(self) -> str:
+        return f"{self.service_provider } ({self.service_type})"

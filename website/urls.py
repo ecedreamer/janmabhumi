@@ -17,6 +17,8 @@ urlpatterns = [
 
     ## admin side views
 
+    path("operator/login", admin_views.AdminLoginView.as_view(), name="adminlogin"),
     path("operator/dashboard", admin_views.AdminDashboardView.as_view(), name="admindashboard"),
     path("operator/pages/create", admin_views.AdminPageCreateView.as_view(), name="adminpagecreate"),
+    path("operator/place/create", admin_views.AdminPlaceCreateView.as_view(), name="adminplacecreate"),
 ]

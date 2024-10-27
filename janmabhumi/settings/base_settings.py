@@ -132,12 +132,15 @@ LOGGING = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+SUMMERNOTE_THEME = "bs4"
+
 SUMMERNOTE_CONFIG = {
     # You can put custom Summernote settings
+    'iframe': True,
     'summernote': {
         # Change editor size
         'width': '100%',
-        'height': '300',
+        'height': '480',
 
         # https://summernote.org/deep-dive/#custom-toolbar-popover
         'toolbar': [

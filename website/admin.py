@@ -1,6 +1,19 @@
 from django.contrib import admin
 from django.apps import apps
 from django.contrib.admin import site
+from django_summernote.admin import SummernoteModelAdmin
+from .models import Place
+
+
+class PlaceAdmin(SummernoteModelAdmin):
+    summernote_fields = ('description',)
+
+    class Media:
+        css = {
+            'all': ('/static/adminstatic/custom_admin.css',)  # Replace with the path to your custom CSS
+        }
+
+admin.site.register(Place, PlaceAdmin)
 
 
 def register_models():

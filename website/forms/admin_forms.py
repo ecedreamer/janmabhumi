@@ -58,3 +58,14 @@ class AdminPageForm(BootstrapForm, forms.ModelForm):
                 attrs={"class": "django_ckeditor_5"}
             )
         }
+
+
+class AdminPlaceForm(BootstrapForm, forms.ModelForm):
+    class Meta:
+        model = models.Place
+        fields = "__all__"
+        widgets = {
+            "description": SummernoteWidget(
+                attrs={"class": "django_ckeditor_5"}
+            )
+        }
