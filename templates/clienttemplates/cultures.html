@@ -1,0 +1,45 @@
+{% extends "clienttemplates/base.html" %}
+
+{% block title %} Cultures in {{ site_info.name }} {% endblock %}
+
+{% block cultures %}active{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="row">
+            <div class="col-md-12">
+                {% for cultural_group in cultural_groups %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>{{ cultural_group.group_name }}</h5>
+                            <hr>
+                            <div class="row">
+                                {% for event in cultural_group.culturalevent_set.all %}
+                                    {% if event.is_active %}
+                                    <div class="col-md-6">
+
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5>{{ event.event_name }}</h5>
+                                            </div>
+                                            <img src="{{ event.event_image.url }}" class="card-img-top"
+                                                 alt="{{ event.event_name }}">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card Title</h5>
+                                                <p class="card-text card-content">
+                                                    {{ event.short_description }}
+                                                </p>
+                                                <a href="{% url 'website:culturaleventdetail' event.slug %}" class="btn btn-primary">Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

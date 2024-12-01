@@ -4,12 +4,15 @@ body {
 
 .navbar {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 75px; /* Adjust the height as needed */
+    align-items: stretch;
 }
 
 .nav-link {
     color: #333 !important;
     margin-right: 20px;
     transition: color 0.3s ease;
+    font-weight: 500;
 }
 
 .nav-link:hover {
@@ -87,6 +90,14 @@ footer p, footer ul li {
     background-color: #f8f9fa;
 }
 
+.card-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Adjust this to set visible lines */
+    -webkit-box-orient: vertical;
+}
+
 .card:hover {
     transform: translateY(-10px);
 }
@@ -114,4 +125,8 @@ footer p, footer ul li {
 .card-text {
     font-size: 1rem;
     color: #6c757d;
+}
+
+.note-float-left, .note-float-right {
+    margin: 5px 15px;
 }

@@ -26,6 +26,22 @@ class HomeView(ClientMixin, generic.TemplateView):
         return context
 
 
+class CulturesView(ClientMixin, generic.TemplateView):
+    template_name = "clienttemplates/cultures.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["cultural_groups"] = CulturalGroup.objects.filter(is_active=True,
+                                                                  culturalevent__is_active=True).order_by("group_name")
+        return context
+
+
+class CulturalEventDetailView(ClientMixin, generic.DetailView):
+    template_name = "clienttemplates/culturaleventdetail.html"
+    model = CulturalEvent
+    context_object_name = "culturalevent"
+
+
 class AboutView(ClientMixin, generic.TemplateView):
     template_name = "clienttemplates/about.html"
 

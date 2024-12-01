@@ -81,7 +81,7 @@
                 <div class="row">
                     {% for important_contant in important_contants %}
                         <div class="col-md-3 card">
-                            <div class="card-header bg-danger">
+                            <div class="card-header bg-info">
                                 <h5 class="text-white">{{ important_contant.service_type }} Service</h5>
                                 <h6 class="text-dark"> {{ important_contant.service_provider }} </h6>
 
@@ -89,8 +89,8 @@
                             <div class="card-body">
                                 <p>Mobile: {{ important_contant.mobile_number }}</p>
                                 <p>Phone: {{ important_contant.phone_number }}</p>
-                                <p>Email: {{ important_contant.email }}</p>
-                                <p>Website: {{ important_contant.website }}</p>
+                                <p>Email: {{ important_contant.email | default:" - " }}</p>
+                                <p>Website: {{ important_contant.website |  default:" - "  }}</p>
                             </div>
 
                         </div>

@@ -10,7 +10,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h4>{% if category %}Places in <span class="text-primary">"{{ category.name }}"</span>{% else %}Popular Places{% endif %}</h4>
+            <h4>Explore <span class="text-primary">"{% if category %}{{ category.name }}{% else %}Popular Places{% endif %}"</span> in {{ site_info.name }}</h4>
         </div>
     </div>
     <hr>

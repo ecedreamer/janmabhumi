@@ -9,7 +9,7 @@ STATIC_ROOT = BASE_DIR / "static"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'prod.db',
+        'NAME': BASE_DIR / config("DB_URL"),
     }
 }
 

@@ -144,3 +144,26 @@ class ImportantContact(AbstractModel):
 
     def __str__(self) -> str:
         return f"{self.service_provider } ({self.service_type})"
+
+
+class CulturalGroup(AbstractModel):
+    group_name = models.CharField(max_length=64)
+    group_image = models.ImageField(upload_to="cultural_groups/")
+    short_description = models.CharField(max_length=200, blank=True)
+    description = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.group_name
+
+
+class CulturalEvent(AbstractModel):
+    event_name = models.CharField(max_length=64)
+    slug = models.SlugField(max_length=128)
+    cultural_group = models.ForeignKey(CulturalGroup, on_delete=models.CASCADE)
+    occurrence = models.CharField(max_length=64, blank=True)
+    event_image = models.ImageField(upload_to="cultural_events/")
+    short_description = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.event_name

@@ -6,7 +6,7 @@ from django.shortcuts import redirect, reverse
 from django.urls import reverse_lazy
 from django.contrib.auth import logout, login
 from website.forms import admin_forms
-from website.models import Operator
+from website.models import Operator, Place
 
 
 logger = logging.getLogger("django")
@@ -63,4 +63,11 @@ class AdminPageCreateView(AdminRequiredMixin, generic.CreateView):
 class AdminPlaceCreateView(AdminRequiredMixin, generic.CreateView):
     template_name = "admintemplates/adminplacecreate.html"
     form_class = admin_forms.AdminPlaceForm
-    success_url = "/admin"
+    success_url = "/operator/dashboard/"
+
+
+class AdminPlaceUpdateView(AdminRequiredMixin, generic.UpdateView):
+    template_name = "admintemplates/adminplacecreate.html"
+    form_class = admin_forms.AdminPlaceForm
+    model = Place
+    success_url = "/operator/dashboard/"

@@ -7,18 +7,21 @@ urlpatterns = [
     ## client side views
 
     path("", client_views.HomeView.as_view(), name="home"),
+    path("cultures/", client_views.CulturesView.as_view(), name="cultures"),
+    path("cultures/<slug:slug>/", client_views.CulturalEventDetailView.as_view(), name="culturaleventdetail"),
     path("about/", client_views.AboutView.as_view(), name="about"),
     path("contact/", client_views.ContactView.as_view(), name="contact"),
     path("places/", client_views.PlaceListView.as_view(), name="placelist"),
-    path("places/<slug>", client_views.PlaceDetailView.as_view(), name="placedetail"),
+    path("places/<slug>/", client_views.PlaceDetailView.as_view(), name="placedetail"),
     path("<category>/places/", client_views.PlaceListView.as_view(), name="categorizedplacelist"),
 
     path("<slug>/", client_views.PageDetailView.as_view(), name="pagedetail"),  # dont put any url with single path param below this
 
     ## admin side views
 
-    path("operator/login", admin_views.AdminLoginView.as_view(), name="adminlogin"),
-    path("operator/dashboard", admin_views.AdminDashboardView.as_view(), name="admindashboard"),
-    path("operator/pages/create", admin_views.AdminPageCreateView.as_view(), name="adminpagecreate"),
-    path("operator/place/create", admin_views.AdminPlaceCreateView.as_view(), name="adminplacecreate"),
+    path("operator/login/", admin_views.AdminLoginView.as_view(), name="adminlogin"),
+    path("operator/dashboard/", admin_views.AdminDashboardView.as_view(), name="admindashboard"),
+    path("operator/pages/create/", admin_views.AdminPageCreateView.as_view(), name="adminpagecreate"),
+    path("operator/place/create/", admin_views.AdminPlaceCreateView.as_view(), name="adminplacecreate"),
+    path("operator/place/<slug:slug>/update/", admin_views.AdminPlaceUpdateView.as_view(), name="adminplaceupdate"),
 ]
