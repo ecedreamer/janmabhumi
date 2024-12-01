@@ -4,7 +4,7 @@ from .base_settings import *
 DEBUG = False
 ALLOWED_HOSTS = ["*"]
 
-STATIC_ROOT = BASE_DIR / "static"
+STATIC_ROOT = BASE_DIR / "staticcdn"
 
 DATABASES = {
     'default': {
