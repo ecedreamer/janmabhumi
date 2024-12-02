@@ -68,7 +68,8 @@ class PlaceListView(ClientMixin, generic.TemplateView):
         try:
             if "category" in self.kwargs:
                 category = self.kwargs["category"]
-                context["category"] = PlaceCategory.objects.get(name__iexact=category)
+                print(category, "--------------")
+                context["category"] = PlaceCategory.objects.get(slug__iexact=category)
                 places = Place.objects.filter(is_active=True, category__name__iexact=category).order_by("view_count")
             else:
                 context["place_type"] = "popular_places"
