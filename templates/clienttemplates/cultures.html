@@ -18,13 +18,10 @@
                                     {% if event.is_active %}
                                     <div class="col-md-6">
                                         <div class="card">
-                                            <div class="card-header">
-                                                <h5>{{ event.event_name }}</h5>
-                                            </div>
                                             <img src="{{ event.event_image.url }}" class="card-img-top"
                                                  alt="{{ event.event_name }}">
                                             <div class="card-body">
-                                                <h5 class="card-title">Card Title</h5>
+                                                <h5 class="card-title">{{ event.event_name }}</h5>
                                                 <p class="card-text card-content">
                                                     {{ event.short_description }}
                                                 </p>
