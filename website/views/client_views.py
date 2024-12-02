@@ -32,7 +32,7 @@ class CulturesView(ClientMixin, generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["cultural_groups"] = CulturalGroup.objects.filter(is_active=True,
-                                                                  culturalevent__is_active=True).order_by("group_name")
+                                                                  culturalevent__is_active=True).distinct().order_by("group_name")
         return context
 
 
