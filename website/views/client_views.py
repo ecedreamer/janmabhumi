@@ -39,7 +39,11 @@ class CulturesView(ClientMixin, generic.TemplateView):
 class CulturalEventDetailView(ClientMixin, generic.DetailView):
     template_name = "clienttemplates/culturaleventdetail.html"
     model = CulturalEvent
-    context_object_name = "culturalevent"
+    context_object_name = "cultural_event"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 
 class AboutView(ClientMixin, generic.TemplateView):

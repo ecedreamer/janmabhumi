@@ -1,19 +1,18 @@
 {% extends "clienttemplates/base.html" %}
 
-{% block title %}{{ culturalevent.event_name }}{% endblock %}
+{% block title %}{{ cultural_event.event_name }}{% endblock %}
 
 {% block cultures %}active{% endblock %}
-<div class="row">
-    <div class="col-md-12">
-        <h4>{{ culturalevent.event_name }}</h4>
-        <hr>
-        <img src="{{ culturalevent.event_image.url }}" alt="" class="img-fluid">
-        <br>
-        <p>{{ culturalevent.description|safe }}</p>
-    </div>
-</div>
 
 {% block content %}
-
+<div class="row">
+    <div class="col-md-12">
+        <h4>{{ cultural_event.event_name }}</h4>
+        <hr>
+        <img src="{{ cultural_event.event_image.url }}" alt="" class="img-fluid">
+        <br>
+        <p>{{ cultural_event.description|safe }}</p>
+    </div>
+</div>
 
 {% endblock %}
