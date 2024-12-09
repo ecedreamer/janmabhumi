@@ -55,6 +55,10 @@ class SiteInfo(AbstractModel):  # only one can be active, if multiple, the lates
     image = models.ImageField(upload_to="site_info/")
     short_description = models.CharField(max_length=200)
     description = models.TextField()
+    contact_number = models.CharField(max_length=16, blank=True)
+    contact_number_alt = models.CharField(max_length=16, blank=True)
+    contact_email = models.EmailField(blank=True)
+    contact_email_alt = models.EmailField(blank=True)
 
     def __str__(self) -> str:
         return str(self.version)

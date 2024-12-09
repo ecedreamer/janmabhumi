@@ -5,20 +5,26 @@
 {% block contact %}active{% endblock %}
 
 {% block content %}
-    <section>
+    <section class="mt-4">
         <div class="row">
             <div class="col-md-12">
-                <h4>Contact Page</h4>
+                <h5>{{ site_info.municipality }}
+                            - {{ site_info.ward_no }}, {{ site_info.name }}, {{ site_info.district }}, Nepal</h5>
                 <hr>
             </div>
         </div>
-    </section>
-    <section>
         <div class="row">
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-12">
-
+                        <img src="{{ site_info.image.url }}" alt="{{ site_info.name }}" class="img-fluid mt-3 mb-3">
+                        <p>{{ site_info.short_description|safe }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p><span>Phone Number: </span> {{ site_info.contact_number }}</p>
+                        <p><span>Email: </span> {{ site_info.contact_email }}</p>
                     </div>
                 </div>
             </div>
